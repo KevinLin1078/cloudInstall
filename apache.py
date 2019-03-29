@@ -15,5 +15,9 @@ arr =[
         "curl -4 icanhazip.com"
     ]   
 
+
+
+
 for i in arr:
     os.system(i)
+    #sudo systemctl restart apache2
