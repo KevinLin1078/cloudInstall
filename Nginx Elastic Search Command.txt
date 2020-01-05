@@ -1,0 +1,70 @@
+sudo unlink /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl restart nginx
+
+sudo unlink /etc/nginx/sites-enabled/example.com
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+sudo nginx -t
+sudo systemctl restart nginx
+
+
+
+sudo nano /etc/nginx/sites-available/example.com
+
+sudo /etc/init.d/nginx start
+
+cat /var/log/nginx/error.log
+cat /var/log/nginx/access.log
+
+sudo nano /etc/nginx/sites-enabled/default
+sudo nano /etc/nginx/nginx.conf
+
+sudo pm2 restart hell
+
+
+sudo npm install express
+sudo systemctl stop apache2.service
+
+
+Kelvin must get a job before graduqtion ceremony walking so said Jesus 	Christ.
+
+
+sudo systemctl restart elasticsearch
+sudo systemctl enable elasticsearch
+curl -X GET 'http://localhost:9200'
+
+elastic kibana
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+
+sudo nano /etc/elasticsearch/elasticsearch.yml
+sudo systemctl enable elasticsearch
+sudo systemctl restart elasticsearch
+curl -X GET "localhost:9200"
+
+sudo netstat -ntlp
+
+
+
+PUT hw6
+{
+  "settings":{
+    "number_of_shards": 3
+  }
+}
+
+curl -X PUT "localhost:9200/twitter" -H 'Content-Type: application/json' -d'
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 3, 
+            "number_of_replicas" : 2 
+        }
+    }
+}
+
+
+sudo nano /etc/logstash/conf.d/hw6.conf
+sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -f /etc/logstash/hw6.conf
+

@@ -1,0 +1,35 @@
+
+mongo-url = "mongodb://130.245.168.89:27017"
+elasticsearch-urls = ["http://localhost:9200" ]
+
+
+namespace-regex = '^stack\.question$'
+direct-read-namespaces = ["stack.question"]
+
+dropped-collections = true
+dropped-databases = true
+#workers = ["c", "d", "e"]
+replay = false
+#change-stream-namespaces = ["stack.question"]
+
+# resume processing from a timestamp saved in a previous run
+resume = true
+# do not validate that progress timestamps have been saved
+resume-write-unsafe = false
+# override the name under which resume state is saved
+resume-name = "default"
+
+# file-highlighting = true
+# index GridFS files inserted into the following collections
+# file-namespaces = ["users.fs.files"]
+# print detailed information including request traces
+# verbose = true
+# enable clustering mode
+cluster-name = 'StackOverflow'
+# do not exit after full-sync, rather continue tailing the oplog
+exit-after-direct-reads = false
+
+[[mapping]]
+namespace = "stack.question"
+index = "question"
+type = "place"

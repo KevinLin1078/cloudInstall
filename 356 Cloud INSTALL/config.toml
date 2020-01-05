@@ -1,0 +1,15 @@
+mongo-url ="mongodb://localhost:27017"
+elasticsearch-url ="http://localhost:9200"
+elasticsearch-max-conns = 10
+replay = true
+resume = true
+resume-name = "default"
+namespace-regex ="stack.^"
+direct-read-namespaces = ["stack.question"]
+index-as-update = true
+verbose = true
+
+[[mapping]]
+namespace = "stack.question"
+index = "question"
+type = "info"

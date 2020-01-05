@@ -1,0 +1,69 @@
+
+
+scp -C -i ~/.ssh/nicole123.pem -r build/* ubuntu@130.245.168.89:/home/ubuntu/build
+
+sudo nano /etc/apache2/sites-available/FlaskApp.conf
+
+sudo a2dissite 000-default.conf; sudo a2ensite FlaskApp.conf; sudo service apache2 reload
+
+sudo a2dissite  000-default.conf; sudo a2ensite FlaskApp.conf;
+sudo a2dissite  FlaskApp.conf; sudo a2ensite FlaskApp.conf;
+
+sudo service apache2 reload
+
+sudo git add .;sudo git commit -m 'working clone2';sudo git push
+57, 60, 76, 247
+
+
+sudo mkdir FlaskApp
+
+cd /var/www/FlaskApp;sudo rm -rf FlaskApp; sudo git clone https://github.com/KevinLin1078/FlaskApp
+
+sudo service apache2 reload
+
+
+
+
+cd /var/www/FlaskApp
+sudo nano flaskapp.wsgi
+
+<VirtualHost *:80>
+                ServerName mywebsite.com
+                ServerAdmin admin@mywebsite.com
+                WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+
+                WSGIDaemonProcess mywebsite.com processes=4 threads=25
+                WSGIProcessGroup mywebsite.com
+
+                <Directory /var/www/FlaskApp/FlaskApp/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/FlaskApp/FlaskApp/static
+                <Directory /var/www/FlaskApp/FlaskApp/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                LogLevel warn
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
+
+
+<VirtualHost *:80>
+        ServerName mywebsite.com
+        ServerAdmin admin@mywebsite.com
+
+        <Proxy balancer://mycluster>
+                BalancerMember http://130.245.170.57
+                BalancerMember http://130.245.170.60
+                BalancerMember http://130.245.170.76
+                BalancerMember http://130.245.170.77:8080
+                BalancerMember http://130.245.170.247
+                BalancerMember http://130.245.168.88
+        </Proxy>
+        ProxyPass / balancer://mycluster
+        ProxyPassReverse / balancer://mycluster
+</VirtualHost>

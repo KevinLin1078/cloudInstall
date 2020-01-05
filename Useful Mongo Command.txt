@@ -1,0 +1,15 @@
+mongoimport --db kevindb --collection movies --jsonArray --file movies.json
+mongoimport --db kevindb --collection people --jsonArray --file people.json
+
+scp -C -i ~/.ssh/kevinkey1.pem -r people.json movies.json ubuntu@ec2-18-220-80-70.us-east-2.compute.amazonaws.com:/home/ubuntu/
+
+
+
+db.student.createIndex({'name':1 , 'age' :1} , {unique : true}  )
+db.tours.find().explain('executionStats')
+
+q = 	[{
+		'$group' : { '_id' }
+	}]
+
+db.tours.aggregate()
